@@ -1,15 +1,19 @@
 import './index.css'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Nav from '../Components/Nav'
+import Error from '../Routes/Error'
 
 function App() {
 
 
   return (
-    <>
-    {/* teste */}
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Nav/>}/>
+        <Route path="*" element={<Error/>}/>
+      </Routes>
+    </Router>
+    
   )
 }
 
