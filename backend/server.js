@@ -8,7 +8,7 @@ const app = express();
 // Porta de acesso
 const Port = 3000;
 
-app.use(cors)
+app.use(cors())
 
 app.use(bodyParser.json());
 
@@ -27,7 +27,13 @@ app.post('/produtos',(req, res)=>{
     if (!imagem || !nomeBicicleta || !descricao || !valor) {
         return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
     }
-    const novoItem ={id:uuid(), imagem, nomeBicicleta, descricao, valor}
+    const novoItem ={
+        id:uuid(), 
+        imagem, 
+        nomeBicicleta, 
+        descricao, 
+        valor}
+
     produtos.push(novoItem);
     res.status(201).json(novoItem);
 })
@@ -52,8 +58,28 @@ app.put('/produtos/:id', (req, res)=> {
     if (produtoIndex === -1) {
         return res.status(404).json({error: 'O produto não foi encontrado.'});
     }
-    produtos[produtoIndex] = { id: produtoId, imagem, nomeBicicleta, descricao, valor};
+    produtos[produtoIndex] = { 
+        id: produtoId,
+        imagem,
+        nomeBicicleta,
+        descricao,
+        valor};
+
     res.json(produtos[produtoIndex])
+})
+
+// Delete produto
+
+app.delete('/produtos/:id', (req, res)=>{
+    const produtoId =req.params.id;
+    const inicioProduto =produtos.length; //Armazenar o tamanho inicial da array
+    produtos = produtos.filter(item => item.id !== produtoId);
+
+    if (produtos.length === inicioProduto) {
+        return res.status(404).json({error: 'Produto não encontrado'});
+
+    }
+    res.status(204).send();
 })
 
 
