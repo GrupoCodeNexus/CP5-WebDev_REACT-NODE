@@ -15,10 +15,46 @@ app.use(bodyParser.json());
 
 // Variáveis para os produtos/serviços 
 
+let produtos = [];
+
+
 // LEMBRETE: Quando formos usar o servidor dentro do frontend/REACT...precisamos usar o AXIOS para comunicação dentro do nosso componente específico
 
+// Produtos
+app.post('/produtos',(req, res)=>{
+    const { imagem,nomeBicicleta, descricao, valor} =req.body;
+
+    if (!imagem || !nomeBicicleta || !descricao || !valor) {
+        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
+    }
+    const novoItem ={id:uuid(), imagem, nomeBicicleta, descricao, valor}
+    produtos.push(novoItem);
+    res.status(201).json(novoItem);
+})
+
+// Leitura dos produtos
+app.get('/produtos', (req, res)=>{
+    res.json(produtos)
+})
 
 
+// Uptade dos produtos
+
+app.put('/produtos/:id', (req, res)=> {
+    const produtoId = req.params.id;
+    const { imagem, nomeBicicleta, descricao, valor}= req.body;
+
+    // Verifica se os campos foram pree
+    if (!imagem || !nomeBicicleta || !descricao || !valor) {
+        return res.status(400).json({ erro: 'O campo é obrigatório. '});
+    }
+    const produtoIndex = produtos.findIndex(item => item.id === produtoId);
+    if (produtoIndex === -1) {
+        return res.status(404).json({error: 'O produto não foi encontrado.'});
+    }
+    produtos[produtoIndex] = { id: produtoId, imagem, nomeBicicleta, descricao, valor};
+    res.json(produtos[produtoIndex])
+})
 
 
 
