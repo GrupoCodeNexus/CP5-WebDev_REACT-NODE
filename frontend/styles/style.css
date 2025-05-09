@@ -1,0 +1,11 @@
+/*css*/
+
+/*criando variáveis de cor*/
+:root {
+    --dark-blue: #000814; /* Azul Bem Escuro*/
+    --med-blue: #001D3D; /* Azul escuro */
+    --blue: #003566; /* Azul */
+    --dark-yel: #FFC300; /* Amarelo escuro */
+    --light-yel: #FFD60A; /* Amarelo claro */
+    --text-color: #fff; /*Cor do texto branco*/
+  }
