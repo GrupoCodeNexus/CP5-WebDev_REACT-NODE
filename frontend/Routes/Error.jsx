@@ -19,8 +19,7 @@ const Error = () => {
         <h2 className="text-7xl font-semibold ">Erro</h2>
         <button
           onClick={() => navigate('/')}
-          className="mt-50 mb-10 bg-white text-black px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition"
-        >
+          className="mt-50 mb-10 bg-white text-black px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition">
           Voltar para Home
         </button>
       </div>
