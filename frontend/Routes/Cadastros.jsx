@@ -51,17 +51,119 @@ const Cadastros = () => {
         }
     }
 
+        // Alterar Produto
+    const alterarProduto = async () => {
+        if ( !imagem || !nomeBicicleta || !descricao || !valor) {
+            alert("Todos os campos são obrigatórios");
+            return;
+        } try {
+            const response = await axios.put(`${API_URL}/${novoProduto.id}`, novoProduto);
+            setProdutos(produtos.map(produto => (produto.id === novoProduto.id ? response.data : produto)));
+            setNovoProduto({id: null, imagem: '', nomeBicicleta: '', descricao:'', valor:''});
+            setEditar(false);
+
+        } catch (error){
+            console.log("Erro ao atualizar o produto", error);
+            alert("Erro ao atualizar o produto")
+        }
+    }
+
+        //DELETAR PRODUTO
+    const deletaProduto = async (id)=>{
+        if (window.confirm("Tem certeza que deseja deletar este produto?")) {
+            try {
+              await axios.delete(`${API_URL}/${id}`);
+              setProdutos(produtos.filter((produto) => produto.id !== id));
+            } catch (error) {
+              console.log("erro ao excluir um produto", error);
+                alert("Erro ao deletar o produto")
+            }
+          } else {
+            console.log("Exclusão do produto cancelada.");
+          }
+    }
+
+    // Método submiti para atualizar o formulário entre cadastrar ou alterar
+     const handleSubmit = (e) => {
+        e.preventDefault();
+        if (editar) {
+            alterarProduto();
+        }else {
+            cadastrarProduto();
+        }
+     }
+
   return (
-    <div>
+    <div className="">
       {/* 
       
       Criar um formulário para página de cadastro dos Produtos
       
       A ideia aqui é você clicar em um Botão 'cadastrar novo produto' e o formulário de
     cadastro vai aparecer
+
+    Em baixo: Aparecera todos os produtos cadastrados um embaixo do outro, com um botão no final para editar ou excluir
+    
       
       
       */}
+      <div>
+        
+      </div>
+
+      {/* Formulário de cadastro */}
+        <form>
+            <h2 className="">Cadastrar Produto</h2>
+            <div className="">
+                <label htmlFor="imagem" className="">Selecione uma imagem</label>
+                <input 
+                    type="text"
+                    id="imagem"
+                    value={novoProduto.imagem}
+                    onChange={(e) => setNovoProduto({...novoProduto, imagem: e.target.value})} 
+                    className=""
+                />
+            </div>
+            <div className="">
+                <label htmlFor="nomeBicicleta" className=""> Nome do produto</label>
+                <input 
+                    type="text"
+                    id="nomeBicicleta"
+                    value={novoProduto.nomeBicicleta}
+                    onChange={(e) => setNovoProduto({...novoProduto, nomeBicicleta: e.target.value})}
+                    className=""
+                    
+                    />
+            </div>
+            <div>
+                <label htmlFor="descricao" className="">Descrição do produto</label>
+                <textarea 
+                    id="descricao"
+                    value={novoProduto.descricao}
+                    onChange={(e) => setNovoProduto({...novoProduto, descricao: e.target.value})}
+                    className=""        
+                />
+            </div>
+            <div>
+                <label htmlFor="valor" className="">Atribua o valor ao produto</label>
+                <input 
+                    type="number"
+                    id="valor"
+                    placeholder="Ex: 2899.90"
+                    step="0.01"
+                    value={novoProduto.valor}
+                    onChange={(e) => setNovoProduto({...novoProduto, valor: e.target.value})}
+                    className=""
+                />
+            </div>
+            <button
+                onClick={handleSubmit}
+                className=""
+            >
+            </button>
+
+            
+        </form>
     </div>
   )
 }
