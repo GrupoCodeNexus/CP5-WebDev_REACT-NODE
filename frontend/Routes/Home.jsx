@@ -13,8 +13,8 @@ const Home = () => {
         />
         <div className='absolute top-0 left-0 w-full h-full flex flex-col items-end justify-center p-8 text-right'>
           <h1 className='text-2xl font-bold text-white mb-2'>Sua nova companheira!</h1>
-          <button className='bg-yellow-500 transition duration-300 cursor-pointer hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full'>
-            <a href='#' className='text-white no-underline'>Faça o test ride</a>
+          <button className='bg-yellow-500 transition duration-300 cursor-pointer font-bold py-2 px-4 rounded-full hover:bg-blue-800'>
+            <a href='#' className='text-blue-900 no-underline transition duration-100 hover:text-yellow-400'>Faça o test ride</a>
           </button>
         </div>
       </div>
