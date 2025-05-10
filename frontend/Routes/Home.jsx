@@ -1,6 +1,7 @@
 import React from 'react';
 import Noticias from './Noticias';
 import Produtos from './Produtos';
+import Header from '../Components/Header'
 
 const Home = () => {
   return (
