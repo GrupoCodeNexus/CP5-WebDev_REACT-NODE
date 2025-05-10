@@ -6,7 +6,7 @@ const Footer = () => {
     <>
     <footer className="bg-blue-900 text-gray-200 py-8">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <img src={logo} className='w-10'/>
+            <img src={logo} className='w-20 p-2'/>
 
             <div className="redes-sociais">
                 <h3 className="text-lg text-yellow-500 font-semibold mb-2">Contato</h3>
