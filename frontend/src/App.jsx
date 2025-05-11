@@ -5,6 +5,7 @@ import Footer from '../Components/Footer'
 import Error from '../Routes/Error'
 import Home from '../Routes/Home'
 import Cadastros from '../Routes/Cadastros'
+import CadastroHeader from '../Components/CadastroHeader'
 
 function AppContent () {
   // Função para ocultar componente quando acessar uma página específica 
@@ -15,7 +16,7 @@ function AppContent () {
 
 return (
   <div className='mr-6 ml-6 sm:mr-5 sm:ml-5 md:mr-10 md:ml-10'> 
-    <Header/> 
+    {location.pathname === '/cadastrarProduto' ? <CadastroHeader/> : <Header/> }
       <Routes>
         <Route path="*" element={<Error/>}/>
         <Route path="/" element={<Home/>}/> 
