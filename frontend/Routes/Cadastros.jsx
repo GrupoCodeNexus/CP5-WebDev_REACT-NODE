@@ -113,20 +113,14 @@ const Cadastros = () => {
 
   return (
 
-    <div className="">
+    <div className="container mx-auto p-4">
       {/* 
-      Criar um formulário para página de cadastro dos Produtos
     Em baixo: Aparecera todos os produtos cadastrados um embaixo do outro, com um botão no final para editar ou excluir
       */}
-      <header>
-        {/* Logo, opção voltar
-            Faixa de boas vindas
-        */}
-      </header>
-      <div className="">
+      <div className="flex justify-between items-center mb-4">
         <button 
             onClick={toggleFormulario} 
-            className="bg-yellow-400 transition duration-300 cursor-pointer my-6 text-amber-50 py-1 px-2 rounded-md hover:bg-yellow-500"
+            className="bg-yellow-400 transition duration-300 cursor-pointer my-6 text-amber-50 py-2 px-4 rounded-md hover:bg-yellow-500"
         >
             {mostrarFormulario && !editar? 'Cancelar' : (editar? 'Cancelar Edição': 'Cadastrar Novo Produto' )}
         </button>
@@ -135,40 +129,43 @@ const Cadastros = () => {
       {/* Formulário de cadastro */}
 
     {mostrarFormulario && (
-        <form onSubmit={handleSubmit} className="">
-            <h2 className="">{editar? "Editar Produto":'Cadastrar Produto'}</h2>
+        <form onSubmit={handleSubmit} className="mb-8 px-8 pt-3.5 pb-7 bg-gray-300 shadow rounded-lg">
+            <h2 className="text-xl font-semibold text-blue-900 mb-6">{editar? "Editar Produto":'Cadastrar Produto'}</h2>
             <div className="">
-                <label htmlFor="imagem" className="">Selecione uma imagem</label>
+                <label htmlFor="imagem" className="block font-medium text-blue-950">Selecione uma imagem</label>
                 <input 
                     type="text"
                     id="imagem"
+                    placeholder="Imagem"
                     value={novoProduto.imagem}
                     onChange={(e) => setNovoProduto({...novoProduto, imagem: e.target.value})} 
-                    className=""
+                    className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full" 
                 />
             </div>
             <div className="">
-                <label htmlFor="nomeBicicleta" className=""> Nome do produto</label>
+                <label htmlFor="nomeBicicleta" className="block font-medium text-blue-950"> Nome do produto</label>
                 <input 
                     type="text"
                     id="nomeBicicleta"
+                    placeholder="Ex: Montain Bike"
                     value={novoProduto.nomeBicicleta}
                     onChange={(e) => setNovoProduto({...novoProduto, nomeBicicleta: e.target.value})}
-                    className=""
+                    className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full"
                     
                     />
             </div>
             <div>
-                <label htmlFor="descricao" className="">Descrição do produto</label>
+                <label htmlFor="descricao" className="block font-medium text-blue-950">Descrição do produto</label>
                 <textarea 
                     id="descricao"
+                    placeholder="Detalhe sobre o produto"
                     value={novoProduto.descricao}
                     onChange={(e) => setNovoProduto({...novoProduto, descricao: e.target.value})}
-                    className=""        
+                    className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full h-24"        
                 />
             </div>
-            <div>
-                <label htmlFor="valor" className="">Atribua o valor ao produto</label>
+            <div className="mb-4">
+                <label htmlFor="valor" className="block font-medium text-blue-950">Atribua o valor ao produto</label>
                 <input 
                     type="number"
                     id="valor"
@@ -176,12 +173,12 @@ const Cadastros = () => {
                     step="0.01"
                     value={novoProduto.valor}
                     onChange={(e) => setNovoProduto({...novoProduto, valor: e.target.value})}
-                    className=""
+                    className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full"
                 />
             </div>
             <button
                 type="submit"
-                className="cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-amber-50 px-4 py-1 rounded-md"
+                className="cursor-pointer mb-4 bg-yellow-400 hover:bg-yellow-500 text-amber-50 px-4 py-2 rounded-md w-full md:w-auto"
             >
                 {editar? 'Salvar Alteração':'Cadastrar Produto'}
             </button>
@@ -193,7 +190,7 @@ const Cadastros = () => {
                         setEditar(false);
                         setNovoProduto({ imagem:'', nomeBicicleta:'', descricao:'', valor:''})
                     }}
-                    className="cursor-pointer bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-md"
+                    className="ccursor-pointer mt-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md w-full md:w-auto"
                 >
                     Cancelar Edição
                 </button>
