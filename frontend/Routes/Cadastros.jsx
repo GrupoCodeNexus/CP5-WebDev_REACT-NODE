@@ -29,6 +29,7 @@ const Cadastros = () => {
             setProdutos([...produtos, response.data])
             setNovoProduto({imagem:'',nomeBicicleta:'',descricao:'',valor:''})
             setEditar(false)
+            setMostrarFormulario(false) //Esconde o formulário após cadastrar
 
         }
         catch(error){
@@ -85,6 +86,14 @@ const Cadastros = () => {
           }
     }
 
+    // Preenche o formulário de novo para a edição
+    const handleEditar = (produto) => {
+        setNovoProduto(produto);
+        setEditar(true);
+        setMostrarFormulario(true);
+    } 
+
+
     // Método submiti para atualizar o formulário entre cadastrar ou alterar
      const handleSubmit = (e) => {
         e.preventDefault();
@@ -127,7 +136,7 @@ const Cadastros = () => {
 
     {mostrarFormulario && (
         <form onSubmit={handleSubmit} className="">
-            <h2 className="">Cadastrar Produto</h2>
+            <h2 className="">{editar? "Editar Produto":'Cadastrar Produto'}</h2>
             <div className="">
                 <label htmlFor="imagem" className="">Selecione uma imagem</label>
                 <input 
@@ -172,9 +181,23 @@ const Cadastros = () => {
             </div>
             <button
                 type="submit"
-                className=""
+                className="cursor-pointer"
             >
+                {editar? 'Salvar Alteração':'Cadastrar Produto'}
             </button>
+            {editar &&(
+                <button 
+                    type="button"
+                    onClick={() => {
+                        setMostrarFormulario(false);
+                        setEditar(false);
+                        setNovoProduto({ imagem:'', nomeBicicleta:'', descricao:'', valor:''})
+                    }}
+                    className="cursor-pointer"
+                >
+                    Cancelar Edição
+                </button>
+            )}
 
         </form>
     )}
@@ -197,7 +220,20 @@ const Cadastros = () => {
                             <p className="">R${parseFloat(produto.valor).toFixed(2)}</p>
                         </div>
                     </div>
-
+                    <div className="">
+                        <button
+                            onClick={() => handleEditar(produto)}
+                            className="bg-yellow-400 text-amber-50 hover:bg-yellow-500 cursor-pointer px-8 rounded-lg"
+                        >
+                            Editar
+                        </button>
+                        <button
+                            onClick={() => deletarProduto(produto.id)}
+                            className="bg-red-500 hover:bg-red-600 text-white cursor-pointer px-8 rounded-md" 
+                        >
+                            Remover
+                        </button>
+                    </div>
                 </li>
             ))}
         </ul>
