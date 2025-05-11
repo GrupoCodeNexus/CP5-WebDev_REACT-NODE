@@ -171,14 +171,38 @@ const Cadastros = () => {
                 />
             </div>
             <button
-                onClick={handleSubmit}
+                type="submit"
                 className=""
             >
             </button>
 
-            
         </form>
     )}
+    {/* Lista de produtos */}
+    <div className="">
+        <h2 className="">Produtos Cadastrados</h2>
+        {produtos.length ==0 && !mostrarFormulario &&(
+            <p className="text-gray-500">Nenhum produto cadastrado. Clique em "Cadastrar Novo Produto" para começar</p>
+        )}
+        <ul className="">
+            {produtos.map(produto => (
+                <li key={produto.id} className="">
+                    <div className="">
+                        {produto.imagem && (
+                            <img src={produto.imagem} alt={produto.nomeBicicleta} className="" />
+                        )}
+                        <div>
+                            <strong className="">{produto.nomeBicicleta}</strong>
+                            <p className="">{produto.descricao}</p>
+                            <p className="">R${parseFloat(produto.valor).toFixed(2)}</p>
+                        </div>
+                    </div>
+
+                </li>
+            ))}
+        </ul>
+    </div>
+
     </div>
   )
 }
