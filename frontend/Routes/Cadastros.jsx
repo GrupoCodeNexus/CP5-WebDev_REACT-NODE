@@ -15,6 +15,7 @@ const Cadastros = () => {
     const [produtos, setProdutos] =useState([]);
     const [novoProduto, setNovoProduto] =useState({imagem:'',nomeBicicleta:'',descricao:'',valor:''});
     const [editar, setEditar] =useState(false);
+    const [mostrarFormulario, setMostrarFormulario] = useState(false); //Visibilidade do Formulário
 
     // Cadastrar produto
     const cadastrarProduto =async()=>{
@@ -61,6 +62,7 @@ const Cadastros = () => {
             setProdutos(produtos.map(produto => (produto.id === novoProduto.id ? response.data : produto)));
             setNovoProduto({id: null, imagem: '', nomeBicicleta: '', descricao:'', valor:''});
             setEditar(false);
+            setMostrarFormulario(false);
 
         } catch (error){
             console.log("Erro ao atualizar o produto", error);
@@ -69,7 +71,7 @@ const Cadastros = () => {
     }
 
         //DELETAR PRODUTO
-    const deletaProduto = async (id)=>{
+    const deletarProduto = async (id)=>{
         if (window.confirm("Tem certeza que deseja deletar este produto?")) {
             try {
               await axios.delete(`${API_URL}/${id}`);
@@ -93,26 +95,38 @@ const Cadastros = () => {
         }
      }
 
+    //  Método de Visibilidade do Formulário
+     const toggleFormulario = () => {
+        setMostrarFormulario(!mostrarFormulario);
+        setEditar(false);
+        setNovoProduto({imagem:'', nomeBicicleta:'', descricao:'', valor:''}) //Limpar o formulário
+     }
+
   return (
+
     <div className="">
       {/* 
-      
       Criar um formulário para página de cadastro dos Produtos
-      
-      A ideia aqui é você clicar em um Botão 'cadastrar novo produto' e o formulário de
-    cadastro vai aparecer
-
     Em baixo: Aparecera todos os produtos cadastrados um embaixo do outro, com um botão no final para editar ou excluir
-    
-      
-      
       */}
-      <div>
-        
+      <header>
+        {/* Logo, opção voltar
+            Faixa de boas vindas
+        */}
+      </header>
+      <div className="">
+        <button 
+            onClick={toggleFormulario} 
+            className="bg-yellow-400 transition duration-300 cursor-pointer m-1 text-amber-50 py-1 px-2 rounded-full hover:bg-yellow-500"
+        >
+            {mostrarFormulario && !editar? 'Cancelar' : (editar? 'Cancelar Edição': 'Cadastrar Novo Produto' )}
+        </button>
       </div>
 
       {/* Formulário de cadastro */}
-        <form>
+
+    {mostrarFormulario && (
+        <form onSubmit={handleSubmit} className="">
             <h2 className="">Cadastrar Produto</h2>
             <div className="">
                 <label htmlFor="imagem" className="">Selecione uma imagem</label>
@@ -164,6 +178,7 @@ const Cadastros = () => {
 
             
         </form>
+    )}
     </div>
   )
 }
