@@ -10,6 +10,14 @@ const CadastroHeader = () => {
                 <Link to="/" className='text-blue-700 hover:text-blue-800 '>Voltar</Link>
             </div>
         </div>
+        <div className='bg-gradient-to-r from-blue-950 to-blue-800 py-19'>
+            <h1 className='text-gray-200 text-2xl md:text-3xl font-semibold text-center'>
+                Olá, Colaborador seja bem vindo!
+            </h1>
+            <p className='text-center text-sm text-gray-200'>
+                Sistema Nexus Bike
+            </p>
+        </div>
     </header>
   )
 }
