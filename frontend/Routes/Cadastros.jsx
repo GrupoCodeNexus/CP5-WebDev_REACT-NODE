@@ -190,7 +190,7 @@ const Cadastros = () => {
                         setEditar(false);
                         setNovoProduto({ imagem:'', nomeBicicleta:'', descricao:'', valor:''})
                     }}
-                    className="ccursor-pointer mt-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md w-full md:w-auto"
+                    className="ccursor-pointer mt-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md w-full md:w-auto"
                 >
                     Cancelar Edição
                 </button>
@@ -198,43 +198,63 @@ const Cadastros = () => {
 
         </form>
     )}
-    {/* Lista de produtos */}
-    <div className="">
-        <h2 className="">Produtos Cadastrados</h2>
-        {produtos.length ==0 && !mostrarFormulario &&(
-            <p className="text-gray-500">Nenhum produto cadastrado. Clique em "Cadastrar Novo Produto" para começar</p>
-        )}
-        <ul className="">
-            {produtos.map(produto => (
-                <li key={produto.id} className="">
-                    <div className="">
-                        {produto.imagem && (
-                            <img src={produto.imagem} alt={produto.nomeBicicleta} className="" />
-                        )}
-                        <div>
-                            <strong className="">{produto.nomeBicicleta}</strong>
-                            <p className="">{produto.descricao}</p>
-                            <p className="">R${parseFloat(produto.valor).toFixed(2)}</p>
+{/* Lista de produtos */}
+<div className="p-6 bg-gray-300 rounded-lg">
+    <h2 className="mb-6 text-2xl font-semibold text-blue-900">Produtos Cadastrados</h2>
+    {produtos.length === 0 && !mostrarFormulario && (
+        <p className="text-gray-500">Nenhum produto cadastrado. Clique em "Cadastrar Novo Produto" para começar.</p>
+    )}
+    <ul className="list-none p-0 m-0">
+        {produtos.map(produto => (
+            <li key={produto.id} className="flex items-center p-4 mb-4 bg-white rounded-xl shadow-lg last:mb-0">
+                <div className="flex-shrink-0 w-24 h-24 md:w-44 md:h-32 mr-4">
+                    {produto.imagem ? (
+                        <img 
+                            src={produto.imagem} 
+                            alt={produto.nomeBicicleta} 
+                            className="w-full h-full object-cover rounded-lg" 
+                         />
+                    ) : (
+                        // Ternário para manter o tamanho mesmo sem carregar a imagem
+                        <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-sm font-medium">
+                            Sem Imagem
                         </div>
-                    </div>
-                    <div className="">
-                        <button
-                            onClick={() => handleEditar(produto)}
-                            className="bg-yellow-400 text-amber-50 hover:bg-yellow-500 cursor-pointer px-8 rounded-lg"
-                        >
-                            Editar
-                        </button>
-                        <button
-                            onClick={() => deletarProduto(produto.id)}
-                            className="bg-red-500 hover:bg-red-600 text-white cursor-pointer px-8 rounded-md" 
-                        >
-                            Remover
-                        </button>
-                    </div>
-                </li>
-            ))}
-        </ul>
-    </div>
+                    )}
+                </div>
+                <div className="flex-grow min-w-0 mr-4">
+                    <strong 
+                        className="block text-lg md:text-xl font-semibold text-blue-800 mb-1 truncate"
+                        title={produto.nomeBicicleta}
+                    >
+                        {produto.nomeBicicleta}
+                    </strong>
+                    <p className="text-sm text-gray-700 mb-2 line-clamp-2 md:line-clamp-3 leading-relaxed">
+                        {produto.descricao}
+                    </p>
+                    <p className="text-md md:text-lg font-semibold text-blue-700">
+                        R${parseFloat(produto.valor).toFixed(2)}
+                    </p>
+                </div>
+
+                {/* Buttons de editar e Remover*/}
+                <div className="flex flex-col space-y-2 flex-shrink-0">
+                    <button
+                        onClick={() => handleEditar(produto)}
+                        className="cursor-pointer bg-yellow-400 text-white hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75 px-4 py-2 rounded-md text-sm font-medium shadow-sm hover:shadow-lg transition-colors duration-150 whitespace-nowrap" /* Consistent padding, text color for readability, focus styles, no text wrap */
+                    >
+                        Editar
+                    </button>
+                    <button
+                        onClick={() => deletarProduto(produto.id)}
+                        className="cursor-pointer bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-75 px-4 py-2 rounded-md text-sm font-medium shadow-sm hover:shadow-lg transition-colors duration-150 whitespace-nowrap" /* Consistent padding, focus styles, no text wrap */
+                    >
+                        Remover
+                    </button>
+                </div>
+            </li>
+        ))}
+    </ul>
+</div>
 
     </div>
   )
