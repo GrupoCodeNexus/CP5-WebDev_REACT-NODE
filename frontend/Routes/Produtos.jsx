@@ -128,23 +128,23 @@ const Produtos = () => {
       </div>
        <div className="">
         <h2 className="">Produtos Cadastrados</h2>
-        <ul className="mb-96 p-6 flex">
-            {produtos.map(produto => (
-                <li key={produto.id} className="">
-                    <div className="">
-                        {produto.imagem && (
-                            <img src={produto.imagem} alt={produto.nomeBicicleta} className="w-full h-full object-cover relative rounded-md" />
-                        )}
-                        <div className='flex-col items-center'>
-                            <strong className="">{produto.nomeBicicleta}</strong>
-                            <p className="">{produto.descricao}</p>
-                            <p className="">R${parseFloat(produto.valor).toFixed(2)}</p>
-                        </div>
-                    </div>
-                </li>
-            ))}
-        </ul>
-    </div>
+          <ul className="p-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+              {produtos.map(produto => (
+                  <li key={produto.id} className=" flex flex-col w-full md:w-auto bg-gradient-to-r from-blue-800 to-blue-600 rounded-md shadow-md">
+                      <div className="flex flex-col items-start">
+                          {produto.imagem && (
+                              <img src={produto.imagem} alt={produto.nomeBicicleta} className="w-full h-auto object-cover rounded-md mb-2" />
+                          )}
+                          <div className="text-justify px-4 pb-2">
+                              <strong className="block text-lg text-white">{produto.nomeBicicleta}</strong>
+                              <p className="text-sm text-gray-100">{produto.descricao}</p>
+                              <p className="text-md text-white mt-1">R${parseFloat(produto.valor).toFixed(2)}</p>
+                          </div>
+                      </div>
+                  </li>
+              ))}
+          </ul>
+        </div>
     </div>
   );
 };
