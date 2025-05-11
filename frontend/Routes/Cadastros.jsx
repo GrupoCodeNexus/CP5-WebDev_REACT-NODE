@@ -126,7 +126,7 @@ const Cadastros = () => {
       <div className="">
         <button 
             onClick={toggleFormulario} 
-            className="bg-yellow-400 transition duration-300 cursor-pointer m-1 text-amber-50 py-1 px-2 rounded-full hover:bg-yellow-500"
+            className="bg-yellow-400 transition duration-300 cursor-pointer my-6 text-amber-50 py-1 px-2 rounded-md hover:bg-yellow-500"
         >
             {mostrarFormulario && !editar? 'Cancelar' : (editar? 'Cancelar Edição': 'Cadastrar Novo Produto' )}
         </button>
@@ -181,7 +181,7 @@ const Cadastros = () => {
             </div>
             <button
                 type="submit"
-                className="cursor-pointer"
+                className="cursor-pointer bg-yellow-400 hover:bg-yellow-500 text-amber-50 px-4 py-1 rounded-md"
             >
                 {editar? 'Salvar Alteração':'Cadastrar Produto'}
             </button>
@@ -193,7 +193,7 @@ const Cadastros = () => {
                         setEditar(false);
                         setNovoProduto({ imagem:'', nomeBicicleta:'', descricao:'', valor:''})
                     }}
-                    className="cursor-pointer"
+                    className="cursor-pointer bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-md"
                 >
                     Cancelar Edição
                 </button>
