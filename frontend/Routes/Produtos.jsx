@@ -5,10 +5,35 @@ import resistente from '../assets/shield.png';
 import carga from '../assets/efficiency.png';
 import economia from '../assets/battery.png';
 import praticidade from '../assets/project-management.png';
+import { useEffect, useState} from 'react';
+import axios from 'axios';
 
 const Produtos = () => {
+
+  // API de consumo
+  const API_URL = 'http://localhost:3000/produtos';
+
+  const [produtos, setProdutos] =useState([]);
+
+  // Listar os produtos cadastrados
+  useEffect(()=>{
+      consultarProdutos();
+  }, [])
+
+  // Consultar produtos
+  const consultarProdutos =async()=> {
+      try{
+          const response = await axios.get(API_URL)
+          setProdutos(response.data);
+      }catch(error){
+          console.log("Produtos não encontrados", error)
+      }
+  }
+
   return (
     <div className="bg-white py-12">
+
+      {/* Caracteristicas dos produtos */}
       <h1 className="text-center text-2xl font-bold text-gray-800 mb-8 mt-10">Conheça a bike</h1>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="grid grid-cols-6 gap-6 items-center justify-center">
@@ -50,6 +75,8 @@ const Produtos = () => {
           </div>
         </div>
       </div>
+
+      {/* Bikes ficxar / ver preço */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="relative rounded-md">
@@ -96,7 +123,28 @@ const Produtos = () => {
             </button>
           </a>
         </div>
+
+      {/* Bikes cadastradas */}
       </div>
+       <div className="">
+        <h2 className="">Produtos Cadastrados</h2>
+        <ul className="mb-96 p-6 flex">
+            {produtos.map(produto => (
+                <li key={produto.id} className="">
+                    <div className="">
+                        {produto.imagem && (
+                            <img src={produto.imagem} alt={produto.nomeBicicleta} className="w-full h-full object-cover relative rounded-md" />
+                        )}
+                        <div className='flex-col items-center'>
+                            <strong className="">{produto.nomeBicicleta}</strong>
+                            <p className="">{produto.descricao}</p>
+                            <p className="">R${parseFloat(produto.valor).toFixed(2)}</p>
+                        </div>
+                    </div>
+                </li>
+            ))}
+        </ul>
+    </div>
     </div>
   );
 };
