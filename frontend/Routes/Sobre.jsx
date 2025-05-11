@@ -24,7 +24,7 @@ const Sobre = () => {
           </div>
           <div className="rounded-lg overflow-hidden shadow-xl">
             <img 
-              src="/sobre-nos.jpg" 
+              src="https://img.odcdn.com.br/wp-content/uploads/2024/01/segway-e-bike.webp" 
               alt="Nossa equipe" 
               className="w-full h-full object-cover"
             />
