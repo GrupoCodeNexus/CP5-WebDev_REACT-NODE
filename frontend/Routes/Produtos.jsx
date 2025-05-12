@@ -110,7 +110,7 @@ const Produtos = () => {
                               </div>
                               <div className="mt-4 flex items-center justify-between">
                                   <span className="text-lg font-bold text-blue-500">R$ {parseFloat(produto.valor).toFixed(2)}</span>
-                                  <button className="bg-blue-700 hover:bg-blue-700 text-yellow-400 font-bold py-2 px-4 
+                                  <button className="cursor-pointer bg-blue-700 text-yellow-400 font-bold py-2 px-4 
                                   rounded-full text-sm transition duration-300 hover:text-blue-700 hover:bg-yellow-500">
                                       Ver Detalhes
                                   </button>
