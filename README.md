@@ -44,9 +44,14 @@ Acesse o Repositório do Projeto: [Clique aqui!](https://github.com/GrupoCodeNex
 
 ## Integrantes da Equipe CodeNexus 🧑‍🤝‍🧑🧑‍🤝‍🧑
 
-- Francisco Vargas [![image](https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe)](https://github.com/Franciscov25) | [![image](https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284) ](https://www.linkedin.com/in/franciscovargas7/)| RM: 560322
-- Kayque Carvalho [![image](https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe)](https://github.com/Kay-Carv) | [![image](https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284)](https://www.linkedin.com/in/kayque-carvalho-49a190283/) | RM: 561189
-- Matheus Ikeda [![image](https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe)](https://github.com/Matheus-Eiki) | 
-[![image](https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284)](https://www.linkedin.com/in/matheus-e-ikeda-943889331/) | RM: 559483
-- Marcelo Affonso [![image](https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe)](https://github.com/tenebres-cpu) | [![image](https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284)](https://www.linkedin.com/in/marcelo-affonso-fonseca-899682333/) | RM: 559790
+- Francisco Vargas [<img src="https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe" width="30px"/>
+](https://github.com/Franciscov25) [<img src="https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284" width="30px"/>
+](https://www.linkedin.com/in/franciscovargas7/)| RM: 560322
+- Kayque Carvalho [<img src="https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe" width="30px"/>
+](https://github.com/Kay-Carv) [<img src="https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284" width="30px"/>
+](https://www.linkedin.com/in/kayque-carvalho-49a190283/)| RM: 561189
+- Matheus Ikeda [<img src="https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe" width="30px"/>](https://github.com/Matheus-Eiki)
+[<img src="https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284" width="30px"/>
+](https://www.linkedin.com/in/matheus-e-ikeda-943889331/)| RM: 559483
+- Marcelo Affonso [<img src="https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe" width="30px"/>](https://github.com/tenebres-cpu) [<img src="https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284" width="30px"/>](https://www.linkedin.com/in/marcelo-affonso-fonseca-899682333/)| RM: 559790
 
