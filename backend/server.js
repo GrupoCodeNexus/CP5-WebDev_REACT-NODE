@@ -2,6 +2,9 @@ const express =require("express") //import modulo express. Framework web Node.js
 const cors =require("cors") // módulo cors (Cross-Origin Resource Sharing). O CORS é um mecanismo de segurança do navegador
 const bodyParser = require("body-parser")  //é um middleware que analisa os corpos das requisições HTTP de entrada (como dados de formulário ou JSON) e os torna acessíveis através de req.body
 const {v4:uuid} =require("uuid") // Importando uuid //A função v4 é responsável por gerar IDs universais únicos (UUIDs) 
+const multer = require("multer"); // Para lidar com o upload de arquivos
+const path = require("path"); // Para lidar com caminhos de arquivos
+const fs = require('fs').promises; // Para operações assíncronas com o sistema de arquivos
 
 const app = express();
 
@@ -9,13 +12,59 @@ const app = express();
 const Port = 3000;
 
 app.use(cors())
-
 app.use(bodyParser.json());
 
 
 // Variáveis para os produtos/serviços 
 
 let produtos = [];
+
+// Pasta para armazenar as imagens enviadas
+const UPLOAD_FOLDER = 'public/Imagens';
+
+fs.mkdir(path.join(__dirname, UPLOAD_FOLDER), { recursive: true }).catch(console.error);
+
+// Configuração do Multer para o upload de imagens
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, UPLOAD_FOLDER));
+    },
+    filename: (req, file, cb) => {
+        const extensao = path.extname(file.originalname);
+        cb(null, `${Date.now()}${extensao}`);
+    }
+});
+
+const upload = multer({ storage: storage });
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+
+// Endpoint para upload de imagem
+app.post('/upload-imagem', upload.single('imagemProduto'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'Nenhum arquivo de imagem enviado.' });
+    }
+    const caminhoRelativo = `/public/Imagens/${req.file.filename}`;
+    res.json({ caminhoDaImagem: caminhoRelativo });
+});
+
+// Endpoint para listar imagens disponíveis
+app.get('/imagens-disponiveis', async (req, res) => {
+    try {
+        const diretorioImagens = path.join(__dirname, UPLOAD_FOLDER);
+        const arquivos = await fs.readdir(diretorioImagens);
+        const imagens = arquivos
+            .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file)) // Filtra apenas arquivos de imagem
+            .map(file => ({
+                nome: file,
+                url: `/public/Imagens/${file}` // Monta a URL para acesso
+            }));
+        res.json(imagens);
+    } catch (error) {
+        console.error("Erro ao listar imagens:", error);
+        res.status(500).json({ message: 'Erro ao carregar a lista de imagens.' });
+    }
+});
 
 
 // LEMBRETE: Quando formos usar o servidor dentro do frontend/REACT...precisamos usar o AXIOS para comunicação dentro do nosso componente específico

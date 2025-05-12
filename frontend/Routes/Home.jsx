@@ -1,13 +1,14 @@
 import React from 'react';
 import Noticias from './Noticias';
 import Produtos from './Produtos';
+import Contato from './Contato';
 
 const Home = () => {
   return (
     <>
       <div className='relative h-64 sm:h-80 md:h-96 w-auto mx-6 sm:mx-5 md:mx-10 rounded-md overflow-hidden'>
         <img
-          src="https://img.odcdn.com.br/wp-content/uploads/2024/01/segway-e-bike.webp"
+          src="https://www.elevate18.com/wp-content/uploads/2022/06/DSC09525-1024x683.jpg"
           alt="Sua nova companheira"
           className="w-full h-auto object-cover"
         />
@@ -19,6 +20,7 @@ const Home = () => {
         </div>
       </div>
       <Produtos/>
+      <Contato/>
       <Noticias />
     </>
   );
