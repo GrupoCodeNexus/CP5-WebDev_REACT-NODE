@@ -11,7 +11,10 @@ import axios from 'axios';
 const Produtos = () => {
 
   // API de consumo
-  const API_URL = 'http://localhost:3000/produtos';
+  const API_URL = 'http://localhost:3000';
+  const PRODUTOS_API_URL = `${API_URL}/produtos`;
+  const UPLOAD_FOLDER_NAME = 'public/Imagens'; // Nome da pasta de uploads no backend
+
 
   const [produtos, setProdutos] =useState([]);
 
@@ -23,11 +26,20 @@ const Produtos = () => {
   // Consultar produtos
   const consultarProdutos =async()=> {
       try{
-          const response = await axios.get(API_URL)
+          const response = await axios.get(PRODUTOS_API_URL)
           setProdutos(response.data);
       }catch(error){
           console.log("Produtos não encontrados", error)
       }
+  }
+
+  // Função para reconstruir a URL completa da imagem
+  const getUrlCompletaImagem = (caminhoRelativo) => {
+      if (!caminhoRelativo) return null; // Ou uma imagem placeholder default
+      if (caminhoRelativo.startsWith('http') || caminhoRelativo.startsWith('data:')) {
+          return caminhoRelativo; // Já é uma URL completa ou data URL
+      }
+      return `${API_URL}${caminhoRelativo}`;
   }
 
   return (
@@ -133,7 +145,10 @@ const Produtos = () => {
                   <li key={produto.id} className=" flex flex-col w-full md:w-auto bg-gradient-to-r from-blue-800 to-blue-600 rounded-md shadow-md">
                       <div className="flex flex-col items-start">
                           {produto.imagem && (
-                              <img src={produto.imagem} alt={produto.nomeBicicleta} className="w-full h-auto object-cover rounded-md mb-2" />
+                              <img 
+                                src={getUrlCompletaImagem(produto.imagem) || '${API_URL}/${UPLOAD_FOLDER_NAME}placeholder.png'} 
+                                alt={produto.nomeBicicleta} 
+                                className="w-full h-auto object-cover rounded-md mb-2" />
                           )}
                           <div className="text-justify px-4 pb-2">
                               <strong className="block text-lg text-white">{produto.nomeBicicleta}</strong>
