@@ -255,7 +255,7 @@ const Cadastros = () => {
             <div className="flex justify-between items-center mb-4">
                 <button
                     onClick={toggleFormulario}
-                    className="bg-yellow-400 transition duration-300 cursor-pointer my-6 text-amber-50 py-2 px-4 rounded-md hover:bg-yellow-500"
+                    className="bg-blue-800 transition duration-300 cursor-pointer my-6 text-amber-50 py-2 px-4 rounded-md hover:bg-blue-600"
                 >
                     {mostrarFormulario ? (editar ? 'Cancelar Edição' : 'Cancelar Cadastro') : 'Cadastrar Novo Produto'}
                 </button>
@@ -263,11 +263,11 @@ const Cadastros = () => {
 
             {/* Formulário de Cadastro/Edição */}
             {mostrarFormulario && (
-                <form onSubmit={handleSubmit} className="mb-8 px-8 pt-3.5 pb-7 bg-gray-300 shadow rounded-lg">
+                <form onSubmit={handleSubmit} className="mb-8 px-8 pt-3.5 pb-7 bg-blue-200 border-3 border-blue-600 rounded-lg">
                     <h2 className="text-xl font-semibold text-blue-900 mb-6">{editar ? "Editar Produto" : 'Cadastrar Produto'}</h2>
 
                     {/* Seção da Imagem */}
-                    <div className="mb-4 p-3 border border-gray-400 rounded-md">
+                    <div className="mb-4 p-3 border border-blue-700 rounded-md">
                         <label className="block font-medium text-blue-950 mb-2">Imagem do Produto</label>
                         {/* Preview da Imagem */}
                         {previewImagem && (
@@ -285,7 +285,7 @@ const Cadastros = () => {
                                 accept="image/*"
                                 ref={inputFileRef}
                                 onChange={handleSelecaoArquivo}
-                                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
+                                className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-300 hover:file:cursor-pointer"
                             />
                         </div>
 
@@ -293,16 +293,16 @@ const Cadastros = () => {
                         <button
                             type="button"
                             onClick={handleClickEscolherImagem}
-                            className="mb-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm"
+                            className="mb-2 bg-blue-700 transition duration-200 hover:bg-blue-900 hover:cursor-pointer text-white py-2 px-4 rounded-md text-sm"
                         >
                             Ou escolher imagem existente
                         </button>
 
                         {/* Feedback do Upload/Seleção */}
-                        {feedbackUpload && <p className="text-sm text-gray-600 mt-1">{feedbackUpload}</p>}
+                        {feedbackUpload && <p className="text-sm text-gray-600 mt-1 ">{feedbackUpload}</p>}
                          {/* Campo oculto ou informativo mostrando a URL da imagem atualmente no estado */}
                         {novoProduto.imagem && !arquivoImagemSelecionada && (
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-xs text-gray-500 mt-1 ">
                                 Imagem atual no formulário: {novoProduto.imagem.split('/').pop()}
                             </p>
                         )}
@@ -311,36 +311,36 @@ const Cadastros = () => {
 
                     {/* Outros campos do formulário */}
                     <div className="">
-                        <label htmlFor="nomeBicicleta" className="block font-medium text-blue-950"> Nome do produto*</label>
+                        <label htmlFor="nomeBicicleta" className="block font-medium text-blue-900"> Nome do produto*</label>
                         <input
                             type="text" id="nomeBicicleta" placeholder="Ex: Montain Bike"
                             value={novoProduto.nomeBicicleta}
                             onChange={(e) => setNovoProduto({ ...novoProduto, nomeBicicleta: e.target.value })}
-                            className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full"
+                            className="mt-1 mb-6 px-2 pt-2 pb-1 border border-blue-700 rounded w-full"
                         />
                     </div>
                     <div>
-                        <label htmlFor="descricao" className="block font-medium text-blue-950">Descrição do produto*</label>
+                        <label htmlFor="descricao" className="block font-medium text-blue-900">Descrição do produto*</label>
                         <textarea
                             id="descricao" placeholder="Detalhe sobre o produto"
                             value={novoProduto.descricao}
                             onChange={(e) => setNovoProduto({ ...novoProduto, descricao: e.target.value })}
-                            className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full h-24"
+                            className="mt-1 mb-6 px-2 pt-2 pb-1 border border-blue-700 rounded w-full h-24"
                         />
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="valor" className="block font-medium text-blue-950">Atribua o valor ao produto*</label>
+                        <label htmlFor="valor" className="block font-medium text-blue-900">Atribua o valor ao produto*</label>
                         <input
                             type="number" id="valor" placeholder="Ex: 2899.90" step="0.01"
                             value={novoProduto.valor}
                             onChange={(e) => setNovoProduto({ ...novoProduto, valor: e.target.value })}
-                            className="mt-1 mb-6 px-2 pt-2 pb-1 border rounded w-full"
+                            className="mt-1 mb-6 px-2 pt-2 pb-1 border border-blue-700 rounded w-full"
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="cursor-pointer mb-4 bg-yellow-400 hover:bg-yellow-500 text-amber-50 px-4 py-2 rounded-md w-full md:w-auto"
+                        className="cursor-pointer mb-4 bg-green-600 hover:bg-green-700 text-amber-50 px-4 py-2 rounded-md w-full md:w-auto"
                     >
                         {editar ? 'Salvar Alteração' : 'Cadastrar Produto'}
                     </button>
@@ -348,7 +348,7 @@ const Cadastros = () => {
                         <button
                             type="button"
                             onClick={resetarFormularioEInputs} // Simplesmente reseta tudo ao cancelar edição
-                            className="cursor-pointer md:ml-2 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md w-full md:w-auto"
+                            className="cursor-pointer md:ml-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md w-full md:w-auto"
                         >
                             Cancelar Edição
                         </button>
@@ -393,7 +393,7 @@ const Cadastros = () => {
 
 
             {/* Lista de Produtos Cadastrados */}
-            <div className="p-6 bg-gray-300 rounded-lg">
+            <div className="p-6 bg-blue-300 rounded-lg">
                 <h2 className="mb-6 text-2xl font-semibold text-blue-900">Produtos Cadastrados</h2>
                 {produtos.length === 0 && !mostrarFormulario && (
                     <p className="text-gray-500">Nenhum produto cadastrado. Clique em "Cadastrar Novo Produto" para começar.</p>
@@ -422,7 +422,7 @@ const Cadastros = () => {
                             <div className="flex flex-row md:flex-col space-x-2 md:space-x-0 md:space-y-2 flex-shrink-0 mt-3 md:mt-0 w-full md:w-auto">
                                 <button
                                     onClick={() => handleEditar(produto)}
-                                    className="flex-1 md:flex-none cursor-pointer bg-yellow-400 text-white hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75 px-4 py-2 rounded-md text-sm font-medium shadow-sm hover:shadow-lg transition-colors duration-150 whitespace-nowrap"
+                                    className="flex-1 md:flex-none cursor-pointer bg-yellow-500 text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75 px-4 py-2 rounded-md text-sm font-medium shadow-sm hover:shadow-lg transition-colors duration-150 whitespace-nowrap"
                                 >
                                     Editar
                                 </button>
