@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.jpeg'
+import { Link } from 'react-router-dom'
 
 const Header = () => (
   <header>
@@ -10,10 +11,10 @@ const Header = () => (
       <div className="flex items-center space-x-6">
         <ul className="flex flex-row text-blue-700 space-x-4">
           <li>
-            <a href="#" className="transition duration-300 hover:text-blue-900">Área do Colaborador</a>
+            <Link to="/cadastrarProduto" className="transition duration-300 hover:text-blue-900">Área do Colaborador</Link>
           </li>
           <li>
-            <a href="#" className="transition duration-300 hover:text-blue-900">Home</a>
+            <Link to="/" className="transition duration-300 hover:text-blue-900">Home</Link>
           </li>
         </ul>
 
