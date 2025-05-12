@@ -6,6 +6,7 @@ import Error from '../Routes/Error'
 import Home from '../Routes/Home'
 import Cadastros from '../Routes/Cadastros'
 import CadastroHeader from '../Components/CadastroHeader'
+import Sobre from '../Routes/Sobre'
 
 function AppContent () {
   // Função para ocultar componente quando acessar uma página específica 
@@ -21,6 +22,7 @@ return (
         <Route path="*" element={<Error/>}/>
         <Route path="/" element={<Home/>}/> 
         <Route path="cadastrarProduto" element={<Cadastros/>}/>
+        <Route path="/sobre" element={<Sobre/>}/>
       </Routes> 
     {!shouldHideLayout && <Footer/>}
   </div>

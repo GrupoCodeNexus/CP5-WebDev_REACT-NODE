@@ -1,7 +1,7 @@
 import React from 'react';
 import Noticias from './Noticias';
 import Produtos from './Produtos';
-import Header from '../Components/Header'
+import Contato from './Contato';
 
 const Home = () => {
   return (
@@ -20,6 +20,7 @@ const Home = () => {
         </div>
       </div>
       <Produtos/>
+      <Contato/>
       <Noticias />
     </>
   );
