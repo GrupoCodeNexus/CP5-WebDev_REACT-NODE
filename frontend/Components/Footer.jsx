@@ -4,7 +4,7 @@ import logo from '../assets/logo.jpeg'
 const Footer = () => {
   return (
     <>
-    <footer className="bg-blue-900 text-gray-200 py-8">
+    <footer className="bg-blue-900 text-gray-200 py-8 w-screen relative left-1/2 right-1/2 -mx-[50vw]">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <img src={logo} className='w-20 p-2 ml-5'/>
 

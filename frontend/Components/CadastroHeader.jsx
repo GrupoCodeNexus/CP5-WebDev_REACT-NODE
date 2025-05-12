@@ -10,7 +10,7 @@ const CadastroHeader = () => {
                 <Link to="/" className='text-blue-700 hover:text-blue-800 '>Voltar</Link>
             </div>
         </div>
-        <div className='bg-gradient-to-r from-blue-950 to-blue-800 py-19'>
+        <div className='bg-gradient-to-r from-blue-950 to-blue-800 py-19 w-screen relative left-1/2 right-1/2 -mx-[50vw]'>
             <h1 className='text-gray-200 text-2xl md:text-3xl font-bold text-center'>
                 Olá, Colaborador seja bem vindo!
             </h1>
