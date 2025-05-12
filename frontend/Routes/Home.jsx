@@ -1,8 +1,5 @@
-import React from 'react';
 import Noticias from './Noticias';
 import Produtos from './Produtos';
-import Header from '../Components/Header';
-import Sobre from './sobre';
 import Contato from './contato';
 
 const Home = () => {
@@ -23,7 +20,6 @@ const Home = () => {
       </div>
       <Produtos/>
       <Contato/>
-      <Sobre/>
       <Noticias />
     </>
   );
