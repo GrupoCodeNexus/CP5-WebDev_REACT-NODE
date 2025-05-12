@@ -5,10 +5,47 @@ import resistente from '../assets/shield.png';
 import carga from '../assets/efficiency.png';
 import economia from '../assets/battery.png';
 import praticidade from '../assets/project-management.png';
+import { useEffect, useState} from 'react';
+import axios from 'axios';
 
 const Produtos = () => {
+
+  // API de consumo
+  const API_URL = 'http://localhost:3000';
+  const PRODUTOS_API_URL = `${API_URL}/produtos`;
+  const UPLOAD_FOLDER_NAME = 'public/Imagens'; // Nome da pasta de uploads no backend
+
+
+  const [produtos, setProdutos] =useState([]);
+
+  // Listar os produtos cadastrados
+  useEffect(()=>{
+      consultarProdutos();
+  }, [])
+
+  // Consultar produtos
+  const consultarProdutos =async()=> {
+      try{
+          const response = await axios.get(PRODUTOS_API_URL)
+          setProdutos(response.data);
+      }catch(error){
+          console.log("Produtos não encontrados", error)
+      }
+  }
+
+  // Função para reconstruir a URL completa da imagem
+  const getUrlCompletaImagem = (caminhoRelativo) => {
+      if (!caminhoRelativo) return null; // Ou uma imagem placeholder default
+      if (caminhoRelativo.startsWith('http') || caminhoRelativo.startsWith('data:')) {
+          return caminhoRelativo; // Já é uma URL completa ou data URL
+      }
+      return `${API_URL}${caminhoRelativo}`;
+  }
+
   return (
     <div className="bg-white py-12">
+
+      {/* Caracteristicas dos produtos */}
       <h1 className="text-center text-2xl font-bold text-gray-800 mb-8 mt-10">Conheça a bike</h1>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="grid grid-cols-6 gap-6 items-center justify-center">
@@ -50,6 +87,8 @@ const Produtos = () => {
           </div>
         </div>
       </div>
+
+      {/* Bikes ficxar / ver preço */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="relative rounded-md">
@@ -96,7 +135,31 @@ const Produtos = () => {
             </button>
           </a>
         </div>
+
+      {/* Bikes cadastradas */}
       </div>
+       <div className="">
+        <h2 className="">Produtos Cadastrados</h2>
+          <ul className="p-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+              {produtos.map(produto => (
+                  <li key={produto.id} className=" flex flex-col w-full md:w-auto bg-gradient-to-r from-blue-800 to-blue-600 rounded-md shadow-md">
+                      <div className="flex flex-col items-start">
+                          {produto.imagem && (
+                              <img 
+                                src={getUrlCompletaImagem(produto.imagem) || '${API_URL}/${UPLOAD_FOLDER_NAME}placeholder.png'} 
+                                alt={produto.nomeBicicleta} 
+                                className="w-full h-auto object-cover rounded-md mb-2" />
+                          )}
+                          <div className="text-justify px-4 pb-2">
+                              <strong className="block text-lg text-white">{produto.nomeBicicleta}</strong>
+                              <p className="text-sm text-gray-100">{produto.descricao}</p>
+                              <p className="text-md text-white mt-1">R${parseFloat(produto.valor).toFixed(2)}</p>
+                          </div>
+                      </div>
+                  </li>
+              ))}
+          </ul>
+        </div>
     </div>
   );
 };
