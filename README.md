@@ -15,11 +15,28 @@ Nosso projeto apresenta funcionalidades como por exemplo como citado anteriormen
 
 ## Como instalar e rodar o projeto 🤔
 Para a instalação deste projeto devemos seguir alguns passos:
-- Primeiro deve-se abrir o terminal Bash
-- Digitar cd frontend
-- Após entrar na pasta frontend você deve digitar npm install
-- Depois da instalação digite npm run dev
-- Agora você deve entrar no link criado pelo mesmo
+1. **Clonar o projeto na sua máquina usando o comando:**
+```Bash
+git clone https://github.com/GrupoCodeNexus/CP5-WebDev_REACT-NODE.git
+cd CP5-WebDev_REACT-NODE
+```
+2. **Entrar na pasta frontend**
+``` Bash
+cd frontend
+```
+3. **Instalar o npm install**
+``` Bash
+npm install
+```
+3. **Iniciar a API**
+```Bash
+npm run dev
+```
+4. **Após iniciar clicar no link que aparece logo abaixo**
+```Bash
+npm run dev
+  ➜  Local:   http://localhost:5173/
+```
 
 ## Links úteis 🔗
 
