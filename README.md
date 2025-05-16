@@ -14,35 +14,51 @@ Nosso projeto apresenta funcionalidades como por exemplo como citado anteriormen
 - React-router-dom
 
 ## Como instalar e rodar o projeto 🤔
+
+**Pré requisitos:**
+  - **``Node.js`` instalado**
+
 Para a instalação deste projeto devemos seguir alguns passos:
 1. **Clonar o projeto na sua máquina usando o comando:**
 ```Bash
 git clone https://github.com/GrupoCodeNexus/CP5-WebDev_REACT-NODE.git
 cd CP5-WebDev_REACT-NODE
 ```
-2. **Entrar na pasta frontend**
+
+2. **Instalando dependências**
+Certifique-se em entrar na pasta backend
+```bash
+cd backend
+npm install # Instale as dependências
+```
+
+3. **Rode o servidor**
+```bash
+node server.js
+```
+_**OBS:** retornara uma mensagem de `Servidor Rodando na porta 3000`_
+
+4. **Abra um novo terminal**
+   
+5. **Entre na pasta frontend**
 ``` Bash
 cd frontend
 ```
-3. **Instalar o npm install**
+6. **Instale as dependências npm install**
 ``` Bash
 npm install
 ```
-3. **Iniciar a API**
+7. **Iniciar a API**
 ```Bash
 npm run dev
 ```
-4. **Após iniciar clicar no link que aparece logo abaixo**
-```Bash
-npm run dev
-  ➜  Local:   http://localhost:5173/
-```
+  Após usar o ``npm install`` Acesse o link que aparcera no terminal:➜  Local:   http://localhost:5173/
 
 ## Links úteis 🔗
 
 Acesse o Repositório do Projeto: [Clique aqui!](https://github.com/GrupoCodeNexus/CP5-WebDev_REACT-NODE)
 
-## Integrantes da Equipe CodeNexus 🧑‍🤝‍🧑🧑‍🤝‍🧑
+## Integrantes da Equipe CodeNexus
 
 - Francisco Vargas [<img src="https://github.com/user-attachments/assets/35f89293-65ea-4f0a-a400-28a28b2bbabe" width="30px"/>
 ](https://github.com/Franciscov25) [<img src="https://github.com/user-attachments/assets/3cafe66c-26e2-4028-a27c-3872972f0284" width="30px"/>
