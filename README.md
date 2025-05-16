@@ -5,13 +5,23 @@ mostrando seus preços e tipos de bicicletas.
 
 Nosso projeto apresenta funcionalidades como por exemplo como citado anteriormente o cadastro de novas bicicletas por parte daquele que estiver gerindo o site, também temos rotas para cada parte do nosso site, desde a Rota para endereços não identificados que seria o Erro 404, até rotas como produto e a home que são principais no projeto. 
 
-## Tecnologias utilizadas 🧑‍💻
-- React 
-- Javacript
-- Tailwind
-- Html
-- Axios
-- React-router-dom
+
+## 💻 Tecnologias Utilizadas:
+**Frontend:** **React + VITE** - para construir uma interface de usuário interativa e modular.
+
+**Estilização:** **Tailwind CSS** - garantindo um design moderno e responsivo em todas as telas.
+
+**Backend:** **Node.js** - para criar uma API robusta e escalável que gerencia todos os dados e a lógica de negócios.
+
+
+## 💡 Diferencial do Projeto:
+**Gerenciamento Avançado de Imagens!** Um dos **princiapis recursos** desenvolvido foi o sistema de **upload** e **seleção de imagens**:
+
+1️⃣-**Upload Local:** Os usuários podem fazer upload de imagens diretamente de seus computadores.
+
+2️⃣-**Renomeação Inteligente:** Cada imagem recebe um ``ID`` específico automaticamente para evitar conflitos.
+
+3️⃣-**Reutilização Eficiente:** Uma vez que a imagem é cadastrada, ela fica disponível em um campo ``"Escolher Imagem Já Existente"``D dentro do formulário de cadastro de novos produtos. 
 
 ## Como instalar e rodar o projeto 🤔
 
