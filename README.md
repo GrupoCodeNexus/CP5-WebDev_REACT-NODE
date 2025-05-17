@@ -1,7 +1,7 @@
 # Nexus Bike 🚲
 
-O nosso objetivo nesse trabalho foi criar uma loja de bicicletas, a qual conseguisse ter uma boa responsividade quanto a outros aparelhos além do computador, e também de criar um CRUD para o cadastro de novas bicicletas
-mostrando seus preços e tipos de bicicletas.
+O nosso objetivo nesse trabalho foi criar uma loja de bicicletas, a qual conseguisse ter uma boa responsividade quanto a outros aparelhos além do computador, e também de criar um CRUD (Create, Read, Uptade, Delete) para o cadastro de novas bicicletas ou produtos dentro do site
+mostrando seus preços, imagens, nome e tipos de bicicletas.
 
 Nosso projeto apresenta funcionalidades como por exemplo como citado anteriormente o cadastro de novas bicicletas por parte daquele que estiver gerindo o site, também temos rotas para cada parte do nosso site, desde a Rota para endereços não identificados que seria o Erro 404, até rotas como produto e a home que são principais no projeto. 
 
@@ -26,7 +26,7 @@ Nosso projeto apresenta funcionalidades como por exemplo como citado anteriormen
 ## Como instalar e rodar o projeto 🤔
 
 **Pré requisitos:**
-  - **``Node.js`` instalado**
+  - **[Node.js](https://nodejs.org/en/download) instalado**
 
 Para a instalação deste projeto devemos seguir alguns passos:
 1. **Clonar o projeto na sua máquina usando o comando:**
